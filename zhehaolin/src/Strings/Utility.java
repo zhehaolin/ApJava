@@ -1,6 +1,6 @@
 package Strings;
 
-
+import java.util.Scanner;
 
 public class Utility{
 
@@ -11,20 +11,36 @@ public class Utility{
     //this main method is designed to help you test your keywordIsIsolated method and noNegations method
     if( keywordIsIsolated(4,"good","i'm good") && keywordIsIsolated(0,"good","good. how are you?") 
     && !keywordIsIsolated(4,"good","goodbye. i hope you feel good") && keywordIsIsolated(25,"good","goodbye. i hope you feel good")){
-      print("You passed all the keywordIsIsolated tests.")
+      print("You passed all the keywordIsIsolated tests.");
     }
     if(!noNegations("I am not great, but I am okay", 9) && noNegations("I am not great, but I am okay", 25) && noNegations("okay", 0)){
-      print("You passed all the noNegations tests.")
+      print("You passed all the noNegations tests.");
     }
     
   }
   
   public static boolean keywordIsIsolated(int psn, String keyword, String s){
-    return true;
+    int lastIndexofkeyword = keyword.length() + psn;
+    
+    if(lastIndexofkeyword == s.length() )
+    {
+    	return true;
+    }
+    if(s.substring(lastIndexofkeyword+1,lastIndexofkeyword+2).compareTo("a") < 0 )
+    {
+    	return true;
+    }
+    return false;
   }
   
   public static boolean noNegations(String s, int psn){
-    return true;
+	  if(psn == 0)
+	  {
+		 return true;
+	  }else {
+		 return s.substring(psn-4, psn-1).equals("no") || s.substring(psn-3, psn-1).equals("not");
+		  
+	  }
   }
   
   
@@ -90,6 +106,6 @@ public class Utility{
  }
  return value;
  }
-
+ //hi
 }
 
