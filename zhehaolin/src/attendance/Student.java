@@ -3,12 +3,14 @@ package attendance;
 public class Student implements Attendee{
 	private String firstname="";
 	private String lastname="";
-	private boolean present=false;
-	public String report="";
+	private boolean present;
+	public String myreport="";
 	
-	public Student()
+	public Student(String first,String last)
 	{
-		
+		this.firstname=first;
+		this.lastname=last;
+		present = false;
 	}
 	public boolean isPresent()
 	{
@@ -17,7 +19,7 @@ public class Student implements Attendee{
 	}
 	public void setPresent(boolean present)
 	{
-		present = true;
+		this.present = present;
 	}
 	public String getFirstName()
 	{
@@ -30,64 +32,43 @@ public class Student implements Attendee{
 	}
 	public boolean matches(String first, String last)
 	{
-		if(first == firstname && last == lastname)
-		{
-			return true;
-		}
-		return false;
+		return first.toLowerCase().equals(firstname.toLowerCase()) &&last.toLowerCase().equals(lastname.toLowerCase());
 	}
 	public boolean match(String last)
 	{
-		if(last == lastname)
-		{
-			return true;
-		}
-		return false;
-		
+		return last.toLowerCase().equals(lastname.toLowerCase());
 	}
 	public String getReportString()
 	{
-		if(lastname.length() > 20)
+		if(lastname.length()>20)
 		{
-			report += lastname.substring(0,17)+"...";
-			if(firstname.length()>20)
-			{
-				 report += firstname.substring(0,17)+"..." + isPresent();
-				 return report;
-			}else
-			{
-				while(firstname.length()<20)
-				{
-					firstname +=" ";
-				}
-				report += firstname + isPresent();
-				return report;
-				
-			}
-			
+			myreport=lastname.substring(0,17) + "...";
 		}else {
-			while(lastname.length()<20)
-			{
-				lastname+= " ";
-			}
-			report +=lastname;
-			if(firstname.length()>20)
-			{
-				 report += firstname.substring(0,17)+"..." + isPresent();
-				 return report;
-			}else
-			{
-				while(firstname.length()<20)
-				{
-					firstname +=" ";
-				}
-				report += firstname + isPresent();
-				return report;
-				
-			}
 			
-			
+			while(lastname.length() <20)
+			{
+				lastname+=" ";
+			}
+			myreport = lastname;
 		}
+		if(firstname.length()>20)
+		{
+			myreport+=firstname.substring(0, 17) + "...";
+		}else {
+			while(firstname.length()<20)
+			{
+				firstname+=" ";
+			}
+			myreport+=firstname;
+		}
+		if(present == true)
+		{
+			return myreport += "PRESENT \n";
+		}else {
+			return myreport += "ABSENT \n";
+		}
+			
+			
 		
 		
 		
