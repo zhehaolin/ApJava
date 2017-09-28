@@ -47,7 +47,7 @@ public class AttendanceMain {
 
 				//if there are no more spaces, this is the last word, so add the whole thing
 				if(endOfWord == -1) {
-					endOfWord = s.length()-1;//subtract 1 because index of last letter is one les than length
+					endOfWord = s.length()-1;//subtract 1 because index of last letter is one less than length
 				}
 
 				//the next word should include the space
@@ -59,6 +59,6 @@ public class AttendanceMain {
 		}
 		System.out.print(printString);
 	}
-
+	//hi
 
 }
