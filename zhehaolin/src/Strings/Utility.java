@@ -24,7 +24,7 @@ public class Utility{
 	  //makes lowercase
 	  searchString = searchString.toLowerCase();
 	  keyword = keyword.toLowerCase();
-	  //find the first position after the startPsn
+	  //find the first psnition after the startPsn
 	  int psn = searchString.indexOf(keyword, startPsn);
 	  
 	  //keep searching until keyword is found(noNegations and isolated)
@@ -57,19 +57,19 @@ public class Utility{
   }
   
   public static boolean noNegations(String s, int psn){
-	  if(pos == 0 || pos < 3)
+	  if(psn == 0 || psn < 3)
 		{
 			return true;
 		}
 		else
 		{
-			if(pos < 4)
+			if(psn < 4)
 			{
-				return !(s.substring(pos - 3, pos - 1).equalsIgnoreCase("no"));
+				return !(s.substring(psn - 3, psn - 1).equalsIgnoreCase("no"));
 			}
 			else
 			{
-				return !(s.substring(pos - 3, pos - 1).equalsIgnoreCase("no") || s.substring(pos - 4, pos - 1).equalsIgnoreCase("not"));
+				return !(s.substring(psn - 3, psn - 1).equalsIgnoreCase("no") || s.substring(psn - 4, psn - 1).equalsIgnoreCase("not"));
 			}
 		}
   }
