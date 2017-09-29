@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class ChatbotMain {
 
 	public static Chatbot chatbot = new Chatbot();
+	// static means independent of instances. This chatbot represent the program itself,when the program runs if you want
+	// to access the state of the program then you need a handle which is chatbot. this means u can access it everywhere
+	// in the program.
 	
 	
 	public static void main(String[] args) {
@@ -75,7 +78,7 @@ public class ChatbotMain {
 	  
 	  public static void multiLinePrint(String s){
 	    String printString = "";
-	 int cutoff = 25;
+	 int cutoff = 55;
 	 //this while loop last as long as there are words left in the original String
 	 while(s.length() > 0){
 
@@ -127,7 +130,7 @@ public class ChatbotMain {
 	 }
 	 return value;
 	 }
-	 //hi
+	
 	}
 
 

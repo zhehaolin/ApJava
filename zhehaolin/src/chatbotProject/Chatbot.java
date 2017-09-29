@@ -9,7 +9,7 @@ public class Chatbot {
 	
 	public Chatbot()
 	{
-		zhehao = new ChatbotZhe();
+		zhehao = new ChatbotZhehao();
 		userName = "unknown user";
 		chatting = true;
 	}
@@ -20,9 +20,10 @@ public class Chatbot {
 		while(chatting) {
 			ChatbotMain.print("what do you want to talk about?");
 			String response = ChatbotMain.getInput();
+			chatting = true;
 			if(zhehao.isTriggered(response)) {
 				chatting = false;
-				zhehao.startChatting();
+				zhehao.startChatting(response);
 			}else {
 				ChatbotMain.print("I am sorry. I don't understand");
 			}
