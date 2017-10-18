@@ -10,7 +10,7 @@ public class ArraysMain {
 	
 	
 	public ArraysMain() {
-		intRay = new int[100];
+		intRay = new int[10000];
 		int[] randomrolls = new int[1000];
 		populate(randomrolls);
 		
