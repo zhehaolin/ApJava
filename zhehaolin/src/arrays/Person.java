@@ -9,12 +9,51 @@ public class Person {
 	public static final String[] LAST_START = {"L","F","Br","Gr","J","Sh","Z","B"};
 	public static final String[] LAST_MIDDLE= {"a","i","e","o","u","is"};
 	public static final String[] LAST_END= {"","son","n","i","r","in","s","o","rs"};
+	
+	//JAVA is pass-by-value
+	//meaning the parameters of a method are just values,not references
+	//so if  you change those values,the original object is not affected
+	//In this case,'name' will not be changed.Nothing can change it
+	//this.firstName via name
+	public static String CreatNickName(String name)
+	{
+		String nickname="";
+		int secondvowel= findSecond(name);
+		nickname=name.substring(0, secondvowel);
+		return nickname;
+		
+	}
+	public static int findSecond(String word)
+	{
+		boolean foundvowel =false;
+		word=word.toLowerCase();
+		int index=word.length();
+		for(int i =0;i<word.length();i++)
+		{
+			if(word.substring(i,i+1).equals("a")||
+				word.substring(i,i+1).equals("e")||
+				word.substring(i,i+1).equals("i")||
+				word.substring(i,i+1).equals("o")||
+				word.substring(i,i+1).equals("u")){
+										
+				if(!foundvowel)
+				{
+					foundvowel=true;
+				}else {
+					return i;
+				}
+			
+			}
+		}
+		return index;
+	}
 			
 	private String firstName;
 	private String lastName;
 	private Borough home;
 	private Hobby hobby;
 	private Person[] friends;
+	private String nickname;
 	
 	public Person(String firstName,String lastName,Borough home) 
 	{
@@ -22,6 +61,7 @@ public class Person {
 		this.lastName = lastName;
 		this.home= home;
 		this.hobby=Hobby.randomHobby();
+		this.nickname=CreatNickName(firstName);
 		friends = new Person[3];
 	}
 	//
@@ -87,6 +127,13 @@ public class Person {
 	}
 	public String toString()
 	{
-		return "My name is " +firstName+" "+lastName+" and I live in "+home+". I like to "+hobby;
+		return "My name is " +firstName+" "+lastName+" and I live in "+home+".call me "+nickname+".";
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+		nickname=CreatNickName(firstName);
 	}
 }
