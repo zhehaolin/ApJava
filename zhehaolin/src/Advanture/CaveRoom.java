@@ -23,7 +23,7 @@ public class CaveRoom {
 		//difference between defaultcontents and content is content becomes an x
 		//When you are inside the room, when you leave, it goes back to default
 		
-		//note by default arrys will populate with null means no connection
+		//note by default arrays will populate with null means no connection
 		borderingRooms= new CaveRoom[4];
 		doors= new Door[4];
 		setDirection();
@@ -60,7 +60,67 @@ public class CaveRoom {
 		String[] directions = {"the North","the East","the South","the West"};
 		return directions[dir];
 	}
+	public void enter()
+	{
+		contents="x";
+	}
+	public void leave()
+	{
+		contents= defaultContents;
+	}
+	// give this room access to another room vice versa
+	//sets door between them, updating the directions
+	public void setConnection(int direction, CaveRoom anotherRoom,Door door)
+	{
+		addRoom(direction,anotherRoom,door);
+		anotherRoom.addRoom(oppositeDirection(direction), this, door);
+		
+	}
 
+	public static int oppositeDirection(int direction) {
+		int[] output={2,3,0,1};
+		
+		return output[direction];
+		
+		
+	}
+	public void interpretInput(String input)
+	{
+		while(isValid(input)) {
+			System.out.print("Only enter w a s d");
+			input= CaveExplorer.in.nextLine();
+		}
+		//task: convert user input into a direction
+		String dirs = "wdsa";
+		goToRoom(dirs.indexOf(input));
+	}
+	private boolean isValid(String input) {
+		String validEntries = "wdsa";
+		return validEntries.indexOf(input) > -1 && input.length() ==1;
+	}
+	private void goToRoom(int direction) {
+		//first, protect against null pinter exception
+		//user cannot go through non-existent door
+		if(borderingRooms[direction]!=null && doors[direction] !=null)
+		{
+			CaveExplorer.currentRoom.leave();
+			CaveExplorer.currentRoom = borderingRooms[direction];
+			CaveExplorer.currentRoom.enter();
+			CaveExplorer.inventory.updateMap();
+		}
+		
+	}
+	// this will be where your group sets up all caves and all the connections
+	public static void setUpCaves()
+	{
+		
+	}
+	public void addRoom(int direction, CaveRoom cave, Door door) {
+		borderingRooms[direction] =cave;
+		doors[direction] = door;
+		setDirection();
+		
+	}
 	public String getDescription() {
 		return description;
 	}
