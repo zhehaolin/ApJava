@@ -86,7 +86,7 @@ public class CaveRoom {
 	}
 	public void interpretInput(String input)
 	{
-		while(isValid(input)) {
+		while(!isValid(input)) {
 			System.out.print("Only enter w a s d");
 			input= CaveExplorer.in.nextLine();
 		}
@@ -113,7 +113,27 @@ public class CaveRoom {
 	// this will be where your group sets up all caves and all the connections
 	public static void setUpCaves()
 	{
+		//ALL OF THIS CODE CAN BE CHANGED
+		//1 decide how big you caves should be
+		CaveExplorer.caves = new CaveRoom[5][5];
+		//2. populate with caves and a default description: hint when starting, use coordinates(help debugging)
+		for(int row=0;row<CaveExplorer.caves.length;row++)
+		{
+			//PAY ATTENTION  TO THE DIFFERENCE
+			for(int col=0;col<CaveExplorer.caves[row].length;col++)
+			{
+				//Create a cave
+				CaveExplorer.caves[row][col] = new CaveRoom("This cave has coords("+row+","+col+")");
+			}
+		}
+		//3 replace default room with custom rooms
 		
+		//4 set starting room
+		CaveExplorer.currentRoom = CaveExplorer.caves[0][1];
+		CaveExplorer.currentRoom.enter();
+		//5 set up doors
+		CaveRoom[][] c = CaveExplorer.caves;
+		c[0][1].setConnection(SOUTH,c[1][1],new Door());
 	}
 	public void addRoom(int direction, CaveRoom cave, Door door) {
 		borderingRooms[direction] =cave;
@@ -122,7 +142,7 @@ public class CaveRoom {
 		
 	}
 	public String getDescription() {
-		return description;
+		return description + "\n"+directions;
 	}
 
 	public void setDescriptiom(String description) {
