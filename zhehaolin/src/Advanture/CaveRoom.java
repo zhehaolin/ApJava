@@ -45,10 +45,7 @@ public class CaveRoom {
 			}
 			
 		}
-		if(!doorFound)
-		{
-			System.out.println("There are no doors, you are trapped in here");
-		}
+		
 			
 		
 		
@@ -159,6 +156,9 @@ public class CaveRoom {
 
 	public void setDefaultContents(String defaultContents) {
 		this.defaultContents = defaultContents;
+	}
+	public Door getDoor(int direction) {
+		return doors[direction];
 	}
 	
 	
