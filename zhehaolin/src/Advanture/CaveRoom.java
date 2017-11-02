@@ -45,6 +45,10 @@ public class CaveRoom {
 			}
 			
 		}
+		if(!doorFound)
+		{
+			directions+= "There is no way out.";
+		}
 		
 			
 		
