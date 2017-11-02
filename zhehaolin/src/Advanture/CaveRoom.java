@@ -112,7 +112,7 @@ public class CaveRoom {
 	{
 		//ALL OF THIS CODE CAN BE CHANGED
 		//1 decide how big you caves should be
-		CaveExplorer.caves = new CaveRoom[5][5];
+		CaveExplorer.caves = new NPCRoom[5][5];
 		//2. populate with caves and a default description: hint when starting, use coordinates(help debugging)
 		for(int row=0;row<CaveExplorer.caves.length;row++)
 		{
@@ -120,10 +120,13 @@ public class CaveRoom {
 			for(int col=0;col<CaveExplorer.caves[row].length;col++)
 			{
 				//Create a cave
-				CaveExplorer.caves[row][col] = new CaveRoom("This cave has coords("+row+","+col+")");
+				CaveExplorer.caves[row][col] = new NPCRoom("This cave has coords("+row+","+col+")");
 			}
 		}
 		//3 replace default room with custom rooms
+		CaveExplorer.npcs= new NPC[1];
+		CaveExplorer.npcs[0]= new NPC();
+		CaveExplorer.npcs[0].setPosition(2, 2);
 		
 		//4 set starting room
 		CaveExplorer.currentRoom = CaveExplorer.caves[0][1];
@@ -158,7 +161,13 @@ public class CaveRoom {
 		this.defaultContents = defaultContents;
 	}
 	public Door getDoor(int direction) {
-		return doors[direction];
+		if(direction >=0 && direction< doors.length)
+		{
+			return doors[direction];
+		}else {
+			return null;
+		}
+		
 	}
 	
 	
