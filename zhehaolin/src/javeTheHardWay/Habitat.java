@@ -13,7 +13,7 @@ public class Habitat extends Environment {
 		}
 		System.out.println(h);
 	}
-	private void addAnimal(Animal animal) {
+	void addAnimal(Animal animal) {
 		int i=0;
 		while(i<animals.length) {
 			if(animals[i] == null) {
