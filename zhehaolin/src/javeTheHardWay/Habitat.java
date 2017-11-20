@@ -40,7 +40,7 @@ public class Habitat extends Environment {
 	public String toString() {
 		return super.toString()+"\nHabitants:\n"+animalReport();
 	}
-	private String animalReport() {
+	public String animalReport() {
 		String s="";
 		for(Animal a: animals) {
 			s+=a+"\n";
