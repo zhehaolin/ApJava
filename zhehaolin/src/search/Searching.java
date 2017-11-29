@@ -67,17 +67,25 @@ public class Searching {
 	//	return -1;
 	//}
 	public static int binarySearch(int[] searchThis,int startIndex,int endIndex,int target) {
-		int middlenum= (startIndex+endIndex)/2;
-		if(target==searchThis[middlenum]) {
-			return middlenum;
+		delay();
+		if(startIndex>endIndex)
+		{
+			return -1;
 		}else {
-			if(target>searchThis[middlenum]) {
-				binarySearch(searchThis,middlenum,searchThis.length-1,target);
+			int middlenum= (int)(startIndex+endIndex)/2;
+			if(target==searchThis[middlenum]) {
+				return middlenum;
 			}else {
-				binarySearch(searchThis,0,middlenum,target);
+			
+				if(target>searchThis[middlenum]) {
+					return binarySearch(searchThis,middlenum+1,endIndex,target);
+				}else{
+					return binarySearch(searchThis,startIndex,middlenum-1,target);
+				}
+				
 			}
 		}
-		return -1;
+		
 
 	}
 	
@@ -87,7 +95,7 @@ public class Searching {
 	 * If you are running this on a slow machine, you can decrease the HANDICAP
 	 * field to decrease the length of the delay
 	 */
-	private void delay() {
+	private static void delay() {
 		try {
 			Thread.sleep(HANDICAP);
 		} catch (InterruptedException e) {
