@@ -19,7 +19,7 @@ public class ArtificalForLoop {
 	public static void forloop(int n, Action a) {
 		if(n>0) {
 			forloop(n-1,a);
-			a.act();
+			a.act();//s
 		}
 	}
 }

@@ -13,7 +13,7 @@ public class LionsPuzzle {
 			//there are no lions to eat you if u eat a sheep
 			return true;
 		}else {
-			// you would eat the sheep knowing tha other lions dont eat the sheep
+			// you would eat the sheep knowing that other lions dont eat the sheep
 			return !eatSheepOrNot(lions-1);
 		}
 	}
