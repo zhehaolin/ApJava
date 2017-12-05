@@ -2,9 +2,9 @@ package search;
 
 public class TowerOfHanoi {
 	public static void main(String[] args) {
-	//	TowerOfHanoi towerOfHanoi= new TowerOfHanoi();
-	//towerOfHanoi.towersolution(3,"A","B","C");
-		reverseString("suny");
+		TowerOfHanoi towerOfHanoi= new TowerOfHanoi();
+		towerOfHanoi.towersolution(3,"A","B","C");
+		//reverseString("suny");
 	}
 
 	private void towersolution(int n, String start, String helper, String end) {
@@ -16,14 +16,14 @@ public class TowerOfHanoi {
 			towersolution(n-1,helper,start,end);
 		}
 	}
-	public static String reverseString(String x) {
-		if(x.length()==1) {
-			System.out.println(x);
-			return x;
-		}else {
-			System.out.println(x.substring(x.length()-1));
-			return reverseString(x.substring(0,x.length()-1));
-		}
+	//public static String reverseString(String x) {
+	//	if(x.length()==1) {
+	//		System.out.println(x);
+	//		return x;
+	//	}else {
+	//		System.out.println(x.substring(x.length()-1));
+	//		return reverseString(x.substring(0,x.length()-1));
+	//	}
 	
-	}
+	//}
 }
